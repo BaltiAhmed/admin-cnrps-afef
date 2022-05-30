@@ -27,7 +27,7 @@ import UserName from "../../components/user/user-name";
 import UserAdresse from "../../components/user/user-adresse";
 import UserEmail from "../../components/user/user-email";
 import UserTel from "../../components/user/user-tel";
-import ModalGalerie from "../../components/Modal/modalGaleriePensionConjoint";
+import ModalGalerie from "../../components/modalGalerie";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -53,7 +53,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function PensionConjoint() {
+export default function AttestationNonAffiliation() {
   const classes = useStyles();
 
   const [page, setPage] = React.useState(0);
@@ -75,7 +75,7 @@ export default function PensionConjoint() {
     const sendRequest = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/pensionConjoint/`
+          `http://localhost:5000/api/attestationNonAffiliation/`
         );
 
         const responseData = await response.json();
@@ -83,7 +83,7 @@ export default function PensionConjoint() {
           throw new Error(responseData.message);
         }
 
-        setList(responseData.PensionCon);
+        setList(responseData.attestation);
       } catch (err) {
         seterror(err.message);
       }
@@ -110,11 +110,12 @@ export default function PensionConjoint() {
             <Table className={classes.table} aria-label="customized table">
               <TableHead>
                 <TableRow>
+                  <StyledTableCell>Centre</StyledTableCell>
                   <StyledTableCell>Nom</StyledTableCell>
-                  <StyledTableCell>Email</StyledTableCell>
-                  <StyledTableCell>Adresse</StyledTableCell>
-                  <StyledTableCell>Téléphone</StyledTableCell>
-                  <StyledTableCell>Galerie</StyledTableCell>
+                  <StyledTableCell>CIN</StyledTableCell>
+                  <StyledTableCell>Date de délivration CIN</StyledTableCell>
+                  <StyledTableCell>Date de naissance</StyledTableCell>
+                  <StyledTableCell>Lieu de naissance</StyledTableCell>
                   <StyledTableCell align="right">Action</StyledTableCell>
                 </TableRow>
               </TableHead>
@@ -131,13 +132,24 @@ export default function PensionConjoint() {
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((row) => (
                       <StyledTableRow key={row.nom}>
-                        <UserName id={row.utilisateurId} />
-                        <UserEmail id={row.utilisateurId} />
-                        <UserAdresse id={row.utilisateurId} />
-                        <UserTel id={row.utilisateurId} />
-
-                        <StyledTableCell>
-                          <ModalGalerie id={row._id} />
+                        
+                        <StyledTableCell align="right">
+                          {row.centre}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {row.nom}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {row.CIN}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {row.dateCIN}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {row.DateNaissance}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {row.lieuNaissance}
                         </StyledTableCell>
 
                         <StyledTableCell>
@@ -145,7 +157,7 @@ export default function PensionConjoint() {
                             onClick={async (event) => {
                               try {
                                 let response = await fetch(
-                                  `http://localhost:5000/api/pensionConjoint/${row._id}`,
+                                  `http://localhost:5000/api/attestationNonAffiliation/${row._id}`,
                                   {
                                     method: "PATCH",
                                     headers: {
@@ -173,8 +185,8 @@ export default function PensionConjoint() {
                                     "Content-Type": "application/json",
                                   },
                                   body: JSON.stringify({
-                                    sujet: "Demande pension conjoin",
-                                    message: "Votre demande de pension conjoin est bien pris en charge",
+                                    sujet: "Demande attestation de non affiliation",
+                                    message: "Votre demande d'attestation de non affiliation est bien pris en charge",
                                     idUtilisateur: row.utilisateurId,
                                   }),
                                 });

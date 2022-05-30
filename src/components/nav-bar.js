@@ -197,6 +197,15 @@ export default function NavBar(props) {
         <Divider />
         {auth.user.type == "RP" && (
           <List>
+            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+              <ListItem button key="">
+                <ListItemIcon>
+                  {" "}
+                  <HomeIcon style={{ color: "#039be5" }} />
+                </ListItemIcon>
+                <ListItemText primary="Acceuil" />
+              </ListItem>
+            </Link>
             <Link
               to="/pension-civile"
               style={{ textDecoration: "none", color: "black" }}
@@ -243,6 +252,56 @@ export default function NavBar(props) {
                   <ArchiveIcon style={{ color: "#039be5" }} />
                 </ListItemIcon>
                 <ListItemText primary="Pensions Temporaire Orphelin" />
+              </ListItem>
+            </Link>
+          </List>
+        )}
+        {auth.user.type == "RA" && (
+          <List>
+            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+              <ListItem button key="">
+                <ListItemIcon>
+                  {" "}
+                  <HomeIcon style={{ color: "#039be5" }} />
+                </ListItemIcon>
+                <ListItemText primary="Acceuil" />
+              </ListItem>
+            </Link>
+            <Link
+              to="/attestation-affiliation"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <ListItem button key="">
+                <ListItemIcon>
+                  {" "}
+                  <ArchiveIcon style={{ color: "#039be5" }} />
+                </ListItemIcon>
+                <ListItemText primary="Demande d'attestation d'affiliation" />
+              </ListItem>
+            </Link>
+            <Link
+              to="/attestation-non-affiliation"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <ListItem button key="">
+                <ListItemIcon>
+                  {" "}
+                  <ArchiveIcon style={{ color: "#039be5" }} />
+                </ListItemIcon>
+                <ListItemText primary="Demande d'attestation de non affiliation" />
+              </ListItem>
+            </Link>
+
+            <Link
+              to="/attestation-non-benifis-pret"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <ListItem button key="">
+                <ListItemIcon>
+                  {" "}
+                  <ArchiveIcon style={{ color: "#039be5" }} />
+                </ListItemIcon>
+                <ListItemText primary="Demande d'attestation de non benifis prèt" />
               </ListItem>
             </Link>
           </List>

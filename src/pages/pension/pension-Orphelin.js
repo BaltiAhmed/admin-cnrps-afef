@@ -165,6 +165,28 @@ export default function PensionOrphelin() {
                                 console.log(err);
                                 seterror(err.message || "il y a un probleme");
                               }
+
+                              try {
+                                let response = await fetch("http://localhost:5000/api/notification/addNotification", {
+                                  method: "POST",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify({
+                                    sujet: "Demande pension orphelin",
+                                    message: "Votre demande de penson orphelin est bien pris en charge",
+                                    idUtilisateur: row.utilisateurId,
+                                  }),
+                                });
+                                let responsedata = await response.json();
+                                if (!response.ok) {
+                                  throw new Error(responsedata.message);
+                                }
+                                setsuccess("Réponse bien ajouter");
+                              } catch (err) {
+                                console.log(err);
+                                seterror(err.message || "probleme!!");
+                              }
                             }}
                             variant="primary"
                           >

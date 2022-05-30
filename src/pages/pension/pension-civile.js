@@ -165,6 +165,28 @@ export default function PensionCivile() {
                                 console.log(err);
                                 seterror(err.message || "il y a un probleme");
                               }
+
+                              try {
+                                let response = await fetch("http://localhost:5000/api/notification/addNotification", {
+                                  method: "POST",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify({
+                                    sujet: "Demande pension cevil",
+                                    message: "Votre demande de pension civil est bien pris en charge",
+                                    idUtilisateur: row.utilisateurId,
+                                  }),
+                                });
+                                let responsedata = await response.json();
+                                if (!response.ok) {
+                                  throw new Error(responsedata.message);
+                                }
+                                setsuccess("Réponse bien ajouter");
+                              } catch (err) {
+                                console.log(err);
+                                seterror(err.message || "probleme!!");
+                              }
                             }}
                             variant="primary"
                           >

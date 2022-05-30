@@ -18,6 +18,9 @@ import PensionCivile from "./pages/pension/pension-civile";
 import PensionRetraite from "./pages/pension/pension-retraite"
 import PensionConjoint from "./pages/pension/pension-conjoint"
 import PensionOrphelin from "./pages/pension/pension-Orphelin"
+import AttestationAffiliation from "./pages/attestation/attestation-affiliation"
+import AttestationNonAffiliation from "./pages/attestation/attestation-non-affiliation"
+import AttestationNonBenifisPret from "./pages/attestation/attestation-non-benifis-pret"
 
 function App() {
   const { user, token, login, logout } = UserAuth();
@@ -39,6 +42,9 @@ function App() {
         <Route path="/pension-retraite" exact element={<PensionRetraite/>} />
         <Route path="/pension-conjoint" exact element={<PensionConjoint/>} />
         <Route path="/pension-orphelin" exact element={<PensionOrphelin/>} />
+        <Route path="/attestation-affiliation" exact element={<AttestationAffiliation/>} />
+        <Route path="/attestation-non-affiliation" exact element={<AttestationNonAffiliation/>} />
+        <Route path="/attestation-non-benifis-pret" exact element={<AttestationNonBenifisPret/>} />
       </Routes>
     );
   } else {
