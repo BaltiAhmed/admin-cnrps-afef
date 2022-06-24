@@ -206,18 +206,7 @@ export default function NavBar(props) {
                 <ListItemText primary="Acceuil" />
               </ListItem>
             </Link>
-            <Link
-              to="/pension-civile"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <ListItem button key="">
-                <ListItemIcon>
-                  {" "}
-                  <ArchiveIcon style={{ color: "#039be5" }} />
-                </ListItemIcon>
-                <ListItemText primary="Pensions Civiles" />
-              </ListItem>
-            </Link>
+            
             <Link
               to="/pension-retraite"
               style={{ textDecoration: "none", color: "black" }}
@@ -252,6 +241,56 @@ export default function NavBar(props) {
                   <ArchiveIcon style={{ color: "#039be5" }} />
                 </ListItemIcon>
                 <ListItemText primary="Pensions Temporaire Orphelin" />
+              </ListItem>
+            </Link>
+            <Link
+              to="/allocation"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <ListItem button key="">
+                <ListItemIcon>
+                  {" "}
+                  <ArchiveIcon style={{ color: "#039be5" }} />
+                </ListItemIcon>
+                <ListItemText primary="Allocation de vieillesse" />
+              </ListItem>
+            </Link>
+
+            <Link
+              to="/Capital-deces"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <ListItem button key="">
+                <ListItemIcon>
+                  {" "}
+                  <ArchiveIcon style={{ color: "#039be5" }} />
+                </ListItemIcon>
+                <ListItemText primary="Capital décés" />
+              </ListItem>
+            </Link>
+            <Link
+              to="/pret-personel"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <ListItem button key="">
+                <ListItemIcon>
+                  {" "}
+                  <ArchiveIcon style={{ color: "#039be5" }} />
+                </ListItemIcon>
+                <ListItemText primary="Prèt personnel" />
+              </ListItem>
+            </Link>
+
+            <Link
+              to="/pret-universitaire"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <ListItem button key="">
+                <ListItemIcon>
+                  {" "}
+                  <ArchiveIcon style={{ color: "#039be5" }} />
+                </ListItemIcon>
+                <ListItemText primary="Prèt universitaire" />
               </ListItem>
             </Link>
           </List>

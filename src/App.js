@@ -21,6 +21,10 @@ import PensionOrphelin from "./pages/pension/pension-Orphelin"
 import AttestationAffiliation from "./pages/attestation/attestation-affiliation"
 import AttestationNonAffiliation from "./pages/attestation/attestation-non-affiliation"
 import AttestationNonBenifisPret from "./pages/attestation/attestation-non-benifis-pret"
+import Allocation from "./pages/pension/allocation"
+import CapitalDeces from "./pages/pension/capital-deces"
+import PretPersonel from "./pages/pension/pret-personel"
+import PretUnversitaire from "./pages/pension/pret-universitaire"
 
 function App() {
   const { user, token, login, logout } = UserAuth();
@@ -45,6 +49,9 @@ function App() {
         <Route path="/attestation-affiliation" exact element={<AttestationAffiliation/>} />
         <Route path="/attestation-non-affiliation" exact element={<AttestationNonAffiliation/>} />
         <Route path="/attestation-non-benifis-pret" exact element={<AttestationNonBenifisPret/>} />
+        <Route path="/Allocation" exact element={<Allocation/>} />
+        <Route path="/pret-personel" exact element={<PretPersonel/>} />
+        <Route path="/pret-universitaire" exact element={<PretUnversitaire/>} />
       </Routes>
     );
   } else {

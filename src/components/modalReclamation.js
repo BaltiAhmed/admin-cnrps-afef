@@ -16,6 +16,8 @@ function MyVerticallyCenteredModal(props) {
   const submit = async (e) => {
     e.preventDefault();
 
+    console.log(message,props.id,props.reclamationId)
+
     try {
       let response = await fetch("http://localhost:5000/api/notification/ajout", {
         method: "POST",
@@ -56,7 +58,7 @@ function MyVerticallyCenteredModal(props) {
         <SuccessModel success={success} />
         <Form onSubmit={submit}>
           <Form.Group controlId="formGridEmail">
-            <Form.Control as="textarea" rows={5} name="message" required />
+            <Form.Control as="textarea" rows={5} onChange={onchange} name="message" required />
           </Form.Group>
           <Button variant="primary" type="submit" style={{ marginTop: 30 }}>
             Ajouter
